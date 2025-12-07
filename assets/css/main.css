@@ -1508,7 +1508,6 @@ input, select, textarea {
 				#header nav.use-middle:after {
 					background: #f3ce92 !important;
 				}
-
 		}
 
 /* Main */
@@ -1670,7 +1669,7 @@ input, select, textarea {
 			opacity: 0;
 		}
 
-		/* Accent color override: fuerza todos los bordes y líneas a #f3ce92 */
+/* Customizations */
 .button,
 input[type="submit"],
 input[type="reset"],
