@@ -399,3 +399,23 @@
 					});
 
 })(jQuery);
+
+document.addEventListener('DOMContentLoaded', () => {
+	const articles = document.querySelectorAll('article[data-src]');
+	articles.forEach(async (article) => {
+    const src = article.dataset.src;
+    if (!src) return;
+    try {
+    	const res = await fetch(src);
+    	if (!res.ok) throw new Error(res.status + ' ' + res.statusText);
+    	const html = await res.text();
+		//Insert the fetched HTML into a container div to avoid overwriting existing content
+    	const container = document.createElement('div');
+    	container.className = 'article-body';
+    	container.innerHTML = html;
+    	article.appendChild(container);
+    } catch (err) {
+    	console.warn('Couldn\'t load article', src, err);
+    }
+});
+});
