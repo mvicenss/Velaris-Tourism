@@ -1,5 +1,6 @@
 @import url(fontawesome-all.min.css);
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300italic,600italic,300,600");
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap');
 
 /*
 	Dimension by HTML5 UP
@@ -181,6 +182,7 @@ input, select, textarea {
 		margin: 0 0 1rem 0;
 		text-transform: uppercase;
 		letter-spacing: 0.2rem;
+		font-family: "Cinzel", serif;
 	}
 
 		h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
@@ -1556,7 +1558,11 @@ input, select, textarea {
 			position: relative;
 			width: 40rem;
 			max-width: 100%;
-			background-color: rgba(27, 31, 34, 0.85);
+			background-color: rgba(27, 31, 34, 0.75); /*changed from 0.85 to 0.75 ot make background more transparent*/
+			backdrop-filter: blur(10px); /*main glassmorphism property: blurs everything behind the elements (our background image)*/
+			-webkit-backdrop-filter: blur(10px); /*same property as above, but for Safari browsers*/
+			border: 1px solid rgba(255, 255, 255, 0.18); /*adds a minimal white border around the glass panel*/
+			box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);  /*adds a blurry shadow beneath the glass panel*/
 			border-radius: 4px;
 			opacity: 0;
 		}
