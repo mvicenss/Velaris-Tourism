@@ -147,6 +147,39 @@
     		color: #1a1a1a !important;
 		}
 		</style>
+
+		<!-- Swiper implementation -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+		<style>
+			/* Adjust Swiper container and slide styles */
+    .swiper {
+        width: 100%;
+        height: auto !important;
+        border-radius: 0.25rem;
+        margin-bottom: 2rem;
+        z-index: 1;
+    }
+    .swiper-wrapper {
+        align-items: center;
+    }
+    .swiper-slide {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: transparent;
+        overflow: hidden;
+        position: relative;
+    }
+    .swiper-slide img {
+        display: block;
+        margin: 0 auto;
+        width: auto;
+        height: 500px; /* Default height based on the largest image */
+        max-height: 500px;
+        object-fit: contain;
+    }
+
+		</style>
 	</head>
 	<body class="is-preload">
 
@@ -180,34 +213,73 @@
 				<!-- Main -->
 					<div id="main">
 
-						<!-- City (intro + pics)-->
+						<!-- City -->
 							<article id="city" data-src="contents/city.html">
 								<h2 class="major">City</h2>
-								<span class="image main"><img src="images/pic01.jpg" alt="" /></span>
+								<!--Swiper-->
+								<div class="swiper mySwiper">
+									<div class="swiper-wrapper">
+										<div class="swiper-slide">
+            								<img src="images/city/city-rainbow.png" alt="Rainbow District" />
+        								</div>
+        								<div class="swiper-slide">
+            								<img src="images/city/city-sidra.jpg" alt="Sidra River" />
+        								</div>
+        								<div class="swiper-slide">
+            								<img src="images/city/city-house-of-wind.png" alt="House of Wind" />
+        								</div>	
+        								<div class="swiper-slide">
+            								<img src="images/city/city-ritas.png" alt="Rita's House" />
+       									</div>
+									</div>
+								</div>
+								
+								<div class="swiper-pagination"></div>
 							</article>
 
 						<!-- Culture (culture and history) -->
 							<article id="culture" data-src="contents/culture.html">
 								<h2 class="major">Culture</h2>
-								<span class="image main"><img src="images/pic03.jpg" alt="" /></span>
+								<div class="swiper mySwiper">
+									<div class="swiper-wrapper">
+										<div class="swiper-slide">
+											<img src="images/culture/culture-zermatt.jpg" alt="Zermatt">
+										</div>
+										<div class="swiper-slide">
+											<img src="images/culture/culture-zermatt-with-mountain.jpg" alt="Zermatt with Mountain">
+										</div>
+									</div>
+								</div>
+								
+								<div class="swiper-pagination"></div>
 							</article>
 
 						<!-- Plans (activities) -->
 							<article id="plans" data-src="contents/plans.html">
 								<h2 class="major">Plans</h2>
-								<span class="image main"><img src="images/pic02.jpg" alt="" /></span>
+								<div class="swiper mySwiper">
+									<div class="swiper-wrapper">
+										<div class="swiper-slide">
+											<img src="images/plans/plans-theatre.png" alt="Theatre District" />
+										</div>
+										<div class="swiper-slide">
+											<img src="images/plans/plans-ramiel.jpg" alt="Ramiel Mountain" />
+										</div>
+									</div>
+
+									<div class="swiper-pagination"></div>
+								</div>
 							</article>
-						
+							
 						<!-- Stay (where to stay) -->
 							<article id="stay" data-src="contents/stay.html">
 								<h2 class="major">Stay</h2>
-								<span class="image main"><img src="images/pic03.jpg" alt="" /></span>
 							</article>
 
 						<!-- Court -->
 							<article id="court" data-src="contents/court.html">
 								<h2 class="major">Court</h2>
-								<span class="image main"><img src="images/pic03.jpg" alt="" /></span>
+								<img src="images/court/court-members.png" alt="Court Members" style="border-radius: 0.25rem; margin-bottom: 2rem; max-width: 100%; height: auto;" />
 							</article>
 
 						<!-- Contact -->
@@ -492,6 +564,10 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 
 					</div>
 
+				<!--Reference to author-->
+					<footer id="author-footer" style="text-align: center; padding: 1rem 0; font-size: 0.9rem; color: #888;">
+						<p class="inspiration-text">This website was inspired by the book series "A Court of Thorns and Roses" by <a href="https://sarahjmaas.com/">Sarah J. Maas.</a></p>
+				
 				<!-- Footer -->
 					<footer id="footer">
 						<p class="copyright">&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
@@ -514,8 +590,28 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
   					console.log('callback - particles.js config loaded');
 				});
 			</script>
-			
+			<!-- Swiper JS -->
+			<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+			<script>
+				var swiper = new Swiper(".mySwiper", {
+        		loop: true,
+        		pagination: {
+            		el: ".swiper-pagination",
+            		clickable: true,
+        		},
+        		autoplay: {
+          			delay: 3500,
+            		disableOnInteraction: false,
+        		},
+				autoHeight: true,
+    			observer: true,
+        		observeParents: true,
+    			});
 
-
+    			// Preload all images in the Swiper slides
+   				document.querySelectorAll('.swiper-slide img').forEach(img => {
+        			img.setAttribute('loading', 'eager');
+    			});
+			</script>
 	</body>
 </html>
